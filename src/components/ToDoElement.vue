@@ -2,39 +2,39 @@
   <div>
     <div class="to-do-element">
       <span class="round">
-        <input :id="todotext.id" type="checkbox" v-model="todotext.checked" v-on:change="handleCheck">
-        <label :for="todotext.id"></label>
+        <input :id="todoelement.id" type="checkbox" v-model="todoelement.checked" v-on:change="handleCheck">
+        <label :for="todoelement.id"></label>
       </span>
-      <p>{{todotext.text}} &nbsp</p>
+      <p>{{todoelement.text}} &nbsp;</p>
       <button v-on:click="openModal">More</button>
 
     </div>
-    <modal @close:modal="closeModal" v-bind:todoelement="todotext" v-show="modalOpen"></modal>
+    <modal @close:modal="closeModal" v-bind:todoelement="todoelement" v-show="modalOpen"></modal>
   </div>
 </template>
 
 <script>
-  import Modal from "./Modal";
+  import Modal from './Modal'
 
   export default {
-    name: "to-do-element",
+    name: 'to-do-element',
     props: {
-      todotext: [],
+      todoelement: {}
     },
-    data() {
+    data () {
       return {
         modalOpen: false
       }
     },
     methods: {
-      handleCheck() {
-        console.log(this.todotext.id + 'tick checked ' + this.todotext.checked.toString())
-        this.$emit('change:todotext', this.todotext)
+      handleCheck () {
+        console.log(this.todoelement.id + 'tick checked ' + this.todoelement.checked.toString())
+        this.$emit('change:todotext', this.todoelement)
       },
-      openModal() {
+      openModal () {
         this.modalOpen = true
       },
-      closeModal() {
+      closeModal () {
         this.modalOpen = false
       }
     },

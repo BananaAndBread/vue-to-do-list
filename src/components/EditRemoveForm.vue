@@ -10,8 +10,8 @@
 
 <script>
   export default {
-    data() {
-
+    data () {
+      return {}
     },
     props: {
       toDoElement: {}
@@ -20,16 +20,15 @@
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+  @import url("https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap");
 
   .edit-remove-form {
     padding-top: 25px;
   }
 
   .edit-remove-form h3 {
-    font-family: Abel;
+    font-family: Abel,serif;
     font-style: normal;
-    font-weight: normal;
     font-weight: normal;
     font-size: 16px;
     letter-spacing: 0.16px;
@@ -46,8 +45,6 @@
     line-height: 30px;
     text-align: left;
     margin-left: 15%;
-
-
   }
 
   .edit-remove-form p {

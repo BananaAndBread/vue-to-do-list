@@ -19,40 +19,40 @@
 
 <script>
   export default {
-    name: "to-do-form",
-    data() {
+    name: 'to-do-form',
+    data () {
       return {
-        newToDoText: "",
-        newToDoDescription: "",
+        newToDoText: '',
+        newToDoDescription: '',
         error: false,
         triedSubmit: false
 
       }
     },
     methods: {
-      handleSubmit() {
-        this.triedSubmit =true;
-        if (this.invalidTitle || this.invalidDescription){
+      handleSubmit () {
+        this.triedSubmit = true
+        if (this.invalidTitle || this.invalidDescription) {
           return
         }
-        let newToDo = {text: this.newToDoText, description: this.newToDoDescription}
-        console.log("I submit" + newToDo);
-        this.$emit('add:new-todo', newToDo);
-        this.newToDoText = "";
-        this.newToDoDescription = ""
-        this.clearStatus();
+        const newToDo = { text: this.newToDoText, description: this.newToDoDescription }
+        console.log('I submit' + newToDo)
+        this.$emit('add:new-todo', newToDo)
+        this.newToDoText = ''
+        this.newToDoDescription = ''
+        this.clearStatus()
       },
-      clearStatus() {
+      clearStatus () {
         this.triedSubmit = false
       }
     },
     computed: {
-      invalidTitle() {
+      invalidTitle () {
         return this.newToDoText === ''
       },
-      invalidDescription() {
+      invalidDescription () {
         return this.newToDoDescription === ''
-      },
+      }
     //   titleInputClassName(){}
     //     return
     }

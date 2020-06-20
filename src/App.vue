@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/todolist">To do list</router-link>
-    </nav>
-    <to-do-list></to-do-list>
+    <NavBar></NavBar>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import ToDoList from "./components/ToDoList";
+import NavBar from './components/NavBar'
 
 export default {
   name: 'app',
-  components: {ToDoList},
+  components: { NavBar },
   data () {
     return {
     }

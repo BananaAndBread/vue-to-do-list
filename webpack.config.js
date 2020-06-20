@@ -11,6 +11,13 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.svg$/,
+        use: [
+          'babel-loader',
+          'vue-svg-loader',
+        ],
+      },
+      {
         test: /\.css$/,
         use: [
           'vue-style-loader',
@@ -61,7 +68,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
@@ -71,7 +78,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'vue$': 'vue/dist/vue.esm.js'
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.resolve('src')
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
@@ -84,7 +92,7 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'

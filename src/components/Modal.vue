@@ -5,14 +5,15 @@
         <div class="imgcontainer">
           <span @click="closeModal" class="close" title="Close">&times;</span>
         </div>
-          <edit-remove-form-custom v-bind:toDoElement="todoelement"></edit-remove-form-custom>
+        <edit-remove-form-custom v-bind:toDoElement="todoelement">
+        </edit-remove-form-custom>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-  import EditRemoveFormCustom from "./EditRemoveForm";
+  import EditRemoveFormCustom from './EditRemoveForm'
 
   export default {
     name: 'Modal',
@@ -20,22 +21,22 @@
       todoelement: {}
     },
     methods: {
-        closeModal() {
-          this.$emit("close:modal")
-        }
-      },
+      closeModal () {
+        this.$emit('close:modal')
+      }
+    },
     components: {
       EditRemoveFormCustom
     }
 
-  };
+  }
 </script>
-
 
 <style scoped>
   * {
     font-family: Helvetica, Arial, sans-serif;
   }
+
   button:hover {
     opacity: 0.8;
   }

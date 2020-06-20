@@ -7,7 +7,7 @@
         <table>
           <tbody>
           <tr>
-            <to-do-element @change:todotext="changeTodoText" v-for ="todo in todos" v-bind:key="todo.id" v-bind:todotext = "todo"/>
+            <to-do-element @change:todoelement="changeTodoText" v-for ="todo in todos" v-bind:key="todo.id" v-bind:todoelement = "todo"/>
           </tr>
           </tbody>
         </table>
@@ -20,44 +20,44 @@
 </template>
 
 <script>
-  import ToDoElement from "./ToDoElement";
-  import ToDoAddForm from "./ToDoAddForm";
+  import ToDoElement from './ToDoElement'
+  import ToDoAddForm from './ToDoAddForm'
   export default {
-    name: "to-do-list",
-    components: {ToDoElement, ToDoAddForm},
-    mounted() {
+    name: 'to-do-list',
+    components: { ToDoElement, ToDoAddForm },
+    mounted () {
       console.log('Mounted -------------------')
       console.log(this.todos)
     },
-    updated() {
+    updated () {
       console.log('Updated')
     },
-    data(){
+    data () {
       return {
-        todos : [{id: 0, text:"Something longer longer longer", checked: true, description: "Description 1"}, {id: 1, text:"Do something 2", checked: false, description: "Description 2"}, {id:2, text:"Do something 3", checked: false, description: "Description 3"}],
+        todos: [{ id: 0, text: 'Something longer longer longer', checked: true, description: 'Description 1' }, { id: 1, text: 'Do something 2', checked: false, description: 'Description 2' }, { id: 2, text: 'Do something 3', checked: false, description: 'Description 3' }]
       }
     },
     methods: {
-      changeTodoText(todotext){
-        console.log("reached parent handler");
-        for(let i=0; i<this.todos.length; i++){
-          if (this.todos[i].id === todotext.id){
+      changeTodoText (todotext) {
+        console.log('reached parent handler')
+        for (let i = 0; i < this.todos.length; i++) {
+          if (this.todos[i].id === todotext.id) {
             this.todos[i] = todotext
           }
         }
       },
-      countTasksDone(){
-        let counter = 0;
-        for(const todo of this.todos){
-          if(todo.checked === true){
-            counter+=1
+      countTasksDone () {
+        let counter = 0
+        for (const todo of this.todos) {
+          if (todo.checked === true) {
+            counter += 1
           }
         }
         return counter
       },
-      addNewToDo(newToDo){
-        newToDo = {id: this.todos.length, text: newToDo.text, description: newToDo.description, checked: false}
-        this.todos = [newToDo,...this.todos]
+      addNewToDo (newToDo) {
+        newToDo = { id: this.todos.length, text: newToDo.text, description: newToDo.description, checked: false }
+        this.todos = [newToDo, ...this.todos]
       }
     }
   }
@@ -69,10 +69,9 @@
     width: 100%;
   }
   .to-do-list{
-    margin-top: 30px;
     background: #FFFFFF;
     box-shadow: 0px 2px 10px rgba(227, 227, 227, 0.5);
-    max-width: 300px;
+    width: 100%;
   }
 
   .title{
@@ -95,39 +94,47 @@
 
   }
   .to-do-add-form {
-    max-width: 300px;
+    margin-top: 0;
   }
 
   @media (max-width: 700px) {
     .to-do-list{
       display: flex;
       flex-direction: column;
+      max-width: 550px;
     }
   }
     .to-do-wrapper{
       display: flex;
       flex-direction: column;
       align-items: center;
-
+    }
+    .to-do-add-form{
+      max-width: 500px;
     }
   @media (min-width: 700px) {
     .to-do-wrapper {
       display: grid;
-      max-width: 1000px;
-      grid-template-areas: "to-do-add-form to-do-elements";
-      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "to-do-add-form to-do-elements .";
+      grid-template-columns: 1fr 1.5fr 0.25fr;
       grid-template-rows: 1fr;
+      align-items: start;
       grid-column-gap: 50px;
+      justify-content: start;
+      max-width: 1500px;
+    }
+    .to-do-add-form{
+      grid-area: to-do-add-form;
     }
     .to-do-list{
+      grid-area: to-do-elements;
       margin-top: 0;
     }
     .content{
-      display: flex;
-      justify-content: center;
+      margin-left: 30px;
     }
     .title{
-      padding-top: 0%;
+      padding-top: 0;
     }
   }
 
