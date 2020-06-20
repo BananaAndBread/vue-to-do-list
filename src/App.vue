@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <nav>
+      <router-link to="/todolist">To do list</router-link>
+    </nav>
     <to-do-list></to-do-list>
   </div>
 </template>
@@ -12,7 +15,6 @@ export default {
   components: {ToDoList},
   data () {
     return {
-
     }
   }
 }
@@ -20,7 +22,5 @@ export default {
 
 <style lang="scss">
 .to-do-list{
-  margin-left: auto;
-  margin-right: auto;
 }
 </style>

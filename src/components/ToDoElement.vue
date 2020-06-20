@@ -5,9 +5,7 @@
         <input :id="todotext.id" type="checkbox" v-model="todotext.checked" v-on:change="handleCheck">
         <label :for="todotext.id"></label>
       </span>
-      <span class="todotext">
       <p>{{todotext.text}} &nbsp</p>
-      </span>
       <button v-on:click="openModal">More</button>
 
     </div>
@@ -51,22 +49,20 @@
   .to-do-element {
     background: #FFFFFF;
     box-shadow: 5px 5px 9px rgba(224, 224, 224, 0.5);
-    /*border: 0.5px #4d4d4d;*/
     display: flex;
-    margin: 16px;
-    position: relative;
+    margin: 5%;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .to-do-element:first-of-type {
-    margin-top: -1px;
+    margin-top: -1%;
   }
 
   .round {
     position: relative;
-    /*vertical-align: middle;*/
-    margin-top: 27px;
-    margin-left: 25px;
-    margin-bottom: 27px;
+    margin-left: 1%;
+    margin-right: 1%;
   }
 
   .round label {
@@ -74,11 +70,11 @@
     border: 1px solid #6074F9;
     border-radius: 50%;
     cursor: pointer;
-    height: 28px;
+    height: 110%; /*28px*/
     left: 0;
     position: absolute;
     top: 0;
-    width: 28px;
+    width: 110%; /*28px*/
   }
 
   .round label:after {
@@ -86,13 +82,13 @@
     border-top: none;
     border-right: none;
     content: "";
-    height: 6px;
-    left: 7px;
+    height: 20%;/*6px*/
+    left: 25%; /*7px*/
     opacity: 0;
     position: absolute;
-    top: 8px;
+    top: 28%;
     transform: rotate(-45deg);
-    width: 12px;
+    width: 42%;
   }
 
   .round input[type="checkbox"] {
@@ -109,33 +105,25 @@
   }
 
   .to-do-element p {
-    margin-left: 64px;
-    margin-top: 13px;
-    font-family: Abel;
+    display:table;
+    font-family: Abel,serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 20px;
-    horiz-align: right;
-
+    font-size: 1em;
+    width: 50%;
   }
 
   .to-do-element button {
-    position: absolute;
-    right: 0;
-    height: 100%;
     background: #F96060;
-    border: 0px;
+    border: 0;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
-    font-family: Happy Monkey;
+    font-family: Happy Monkey,fantasy;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
-    padding-left: 10px;
-    /* identical to box height */
-    padding-right: 10px;
+    font-size: 1em;
     width: 5em;
     color: #FFFFFF;
+    align-self: stretch;
   }
 </style>

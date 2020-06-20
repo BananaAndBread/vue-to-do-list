@@ -66,26 +66,25 @@
     font-family: Happy Monkey;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
-    line-height: 22px;
-    /* identical to box height */
+    font-size: 1.5em;
+    align-items: center;
     text-align: center;
+    justify-content: center;
   }
 
   .title-form p {
-    margin-left: 10px;
+    margin-left: 5%;
     position: relative;
   }
 
   .title-form-input {
-    margin-top: 16px;
     border-color: #F4F4F4;
     border: 0px;
-    height: 1.5em;
+    height: 2em;
     width: 50%;
     border-radius: 5px;
-    position: absolute;
-    right: 25%
+    /*position: absolute;*/
+    /*right: 25%;*/
   }
 
   .not-error-input{
@@ -98,10 +97,11 @@
   .to-do-form {
     margin-bottom: 25px;
     text-align: left;
-    width: 344px;
+    width: 100%;
     position: relative;
-    margin-right: auto;
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+
   }
 
   .description-form {
@@ -124,7 +124,6 @@
     margin-top: 0px;
     padding-top: 0px;
     background: #FFFFFF;
-    box-sizing: border-box;
     border-radius: 5px;
     height: 100px;
     width: 95%;
@@ -140,10 +139,8 @@
     font-size: 16px;
     padding-top: 13px;
     padding-bottom: 13px;
-    margin-left: 10px;
-    width: 295px;
-    text-align: center;
     width: 100%;
+    text-align: center;
     color: #FFFFFF;
     position: absolute;
     margin-top: 15px;
