@@ -45,7 +45,7 @@
   }
 </script>
 
-<style scoped>
+<style>
   .to-do-element {
     background: #FFFFFF;
     box-shadow: 5px 5px 9px rgba(224, 224, 224, 0.5);
@@ -53,6 +53,7 @@
     margin: 5%;
     justify-content: space-between;
     align-items: center;
+    transition: transform .2s;
   }
 
   .to-do-element:first-of-type {
@@ -113,6 +114,10 @@
     width: 50%;
   }
 
+  .to-do-element:hover {
+    transform: scale(1.1);
+  }
+
   .to-do-element button {
     background: #F96060;
     border: 0;
@@ -126,4 +131,5 @@
     color: #FFFFFF;
     align-self: stretch;
   }
+
 </style>
