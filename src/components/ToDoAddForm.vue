@@ -12,12 +12,13 @@
     </textarea>
         <p v-if="invalidDescription && triedSubmit"> NO EMPTY SPACES!</p>
       </div>
-      <button class="add-todo-button" v-on:submit="handleSubmit">Add todo</button>
+      <Button class="add-todo-button" v-bind:text="'Add ToDo'" v-on:submit="handleSubmit">Add todo</Button>
     </form>
   </div>
 </template>
 
 <script>
+  import Button from '@/components/Button';
   export default {
     name: 'to-do-form',
     data () {
@@ -55,11 +56,13 @@
       }
     //   titleInputClassName(){}
     //     return
+    },
+    components: {
+      Button
     }
   }
 </script>
-
-<style>
+<style scoped>
   .title-form {
     display: flex;
     background: #F4F4F4;
@@ -74,7 +77,6 @@
 
   .title-form p {
     margin-left: 5%;
-    position: relative;
   }
 
   .title-form-input {
@@ -85,6 +87,10 @@
     border-radius: 5px;
     /*position: absolute;*/
     /*right: 25%;*/
+  }
+
+  .title-form-input:hover{
+    border: 1px solid #6074F9;
   }
 
   .not-error-input{
@@ -129,20 +135,13 @@
     width: 95%;
   }
 
+  .description-form-textarea:hover {
+    border-color: #6074F9;
+  }
+
   .add-todo-button {
-    background: #F96060;
-    border-radius: 5px;
-    border: 0px;
-    font-family: Happy Monkey;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    padding-top: 13px;
-    padding-bottom: 13px;
     width: 100%;
     text-align: center;
-    color: #FFFFFF;
-    position: absolute;
     margin-top: 15px;
   }
 </style>

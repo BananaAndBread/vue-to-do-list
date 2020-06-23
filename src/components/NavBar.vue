@@ -27,7 +27,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
   .nav {
     border: 1px solid #F96060;
     background: #F96060;

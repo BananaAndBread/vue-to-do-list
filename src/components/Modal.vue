@@ -5,7 +5,7 @@
         <div class="imgcontainer">
           <span @click="closeModal" class="close" title="Close">&times;</span>
         </div>
-        <edit-remove-form-custom v-bind:toDoElement="todoelement">
+        <edit-remove-form-custom ref="editRemoveForm" v-bind:toDoElement="todoelement">
         </edit-remove-form-custom>
       </form>
     </div>
@@ -23,6 +23,11 @@
     methods: {
       closeModal () {
         this.$emit('close:modal')
+        this.$refs.editRemoveForm.cancelChanges()
+      },
+      saveState () {
+        console.log('Save state in modal')
+        this.$refs.editRemoveForm.saveState()
       }
     },
     components: {
@@ -43,7 +48,7 @@
 
   .imgcontainer {
     text-align: center;
-    margin: 8% 0 8% 0;
+    margin: 1em 0 0 0;
     position: relative;
   }
 
@@ -62,7 +67,7 @@
     margin: 4% auto 15% auto;
     border: 1px solid #888;
     width: 80%;
-    padding-bottom: 8%;
+    padding-bottom: 2em;
   }
 
   .close {

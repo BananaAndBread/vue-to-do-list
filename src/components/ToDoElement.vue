@@ -9,7 +9,7 @@
       <button v-on:click="openModal">More</button>
 
     </div>
-    <modal @close:modal="closeModal" v-bind:todoelement="todoelement" v-show="modalOpen"></modal>
+    <modal @close:modal="closeModal" ref="modal" v-bind:todoelement="todoelement" v-show="modalOpen"></modal>
   </div>
 </template>
 
@@ -33,6 +33,7 @@
       },
       openModal () {
         this.modalOpen = true
+        this.$refs.modal.saveState()
       },
       closeModal () {
         this.modalOpen = false
@@ -45,7 +46,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .to-do-element {
     background: #FFFFFF;
     box-shadow: 5px 5px 9px rgba(224, 224, 224, 0.5);
