@@ -5,7 +5,7 @@
         <div class="imgcontainer">
           <span @click="closeModal" class="close" title="Close">&times;</span>
         </div>
-        <edit-remove-form-custom @passToParent='passToParent' @closeModal='closeModal' ref="editRemoveForm" v-bind:toDoElement="todoelement">
+        <edit-remove-form-custom @closeModal='closeModal' ref="editRemoveForm" v-bind:toDoElement="todoelement">
         </edit-remove-form-custom>
       </form>
     </div>
@@ -27,9 +27,6 @@
       saveState () {
         console.log('Save state in modal')
       },
-      passToParent (data) {
-        this.$emit('transferFromChild', data)
-      }
     },
     components: {
       EditRemoveFormCustom

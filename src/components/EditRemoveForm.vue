@@ -54,8 +54,9 @@
         this.$emit('closeModal')
       },
       deleteToDo () {
-        this.$emit('passToParent', this.toDoElement.id)
         this.$emit('closeModal')
+        this.$store.dispatch('removeToDo', this.toDoElement.id)
+        console.log(this.$store.state.todos)
       }
     }
   }

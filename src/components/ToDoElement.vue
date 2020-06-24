@@ -9,7 +9,7 @@
       <button v-on:click="openModal">More</button>
 
     </div>
-    <modal @close:modal="closeModal" @transferFromChild="deleteToDo" v-bind:todoelement="todoelement" v-if="modalOpen"></modal>
+    <modal @close:modal="closeModal" v-bind:todoelement="todoelement" v-if="modalOpen"></modal>
   </div>
 </template>
 
@@ -27,18 +27,13 @@
       }
     },
     methods: {
-      handleCheck () {
-        console.log(this.todoelement.id + 'tick checked ' + this.todoelement.checked.toString())
-        this.$emit('change:todotext', this.todoelement)
-      },
       openModal () {
         this.modalOpen = true
       },
       closeModal () {
         this.modalOpen = false
       },
-      deleteToDo (id) {
-        this.$emit('deleteToDo', id)
+      handleCheck () {
       }
     },
     components: {

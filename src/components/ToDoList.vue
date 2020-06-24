@@ -7,7 +7,7 @@
         <table>
           <tbody>
           <tr>
-            <to-do-element @deleteToDo='deleteToDo' @change:todoelement="changeTodoText" v-for ="todo in todos" v-bind:key="todo.id" v-bind:todoelement = "todo"/>
+            <to-do-element v-for ="todo in todos" v-bind:key="todo.id" v-bind:todoelement = "todo"/>
           </tr>
           </tbody>
         </table>
@@ -26,26 +26,14 @@
     name: 'to-do-list',
     components: { ToDoElement, ToDoAddForm },
     mounted () {
-      console.log('Mounted -------------------')
-      console.log(this.todos)
-    },
-    updated () {
-      console.log('Updated')
+      console.log('Data')
+      this.$store.dispatch('getToDos')
     },
     data () {
       return {
-        todos: [{ id: 0, text: 'Something longer longer longer', checked: true, description: 'Description 1' }, { id: 1, text: 'Do something 2', checked: false, description: 'Description 2' }, { id: 2, text: 'Do something 3', checked: false, description: 'Description 3' }]
       }
     },
     methods: {
-      changeTodoText (todotext) {
-        console.log('reached parent handler')
-        for (let i = 0; i < this.todos.length; i++) {
-          if (this.todos[i].id === todotext.id) {
-            this.todos[i] = todotext
-          }
-        }
-      },
       countTasksDone () {
         let counter = 0
         for (const todo of this.todos) {
@@ -56,12 +44,12 @@
         return counter
       },
       addNewToDo (newToDo) {
-        newToDo = { id: this.todos.length, text: newToDo.text, description: newToDo.description, checked: false }
-        this.todos = [newToDo, ...this.todos]
-      },
-      deleteToDo (id) {
-        console.log(id)
-        this.todos = this.todos.filter(todo => todo.id !== id)
+        this.$store.dispatch('addToDo', newToDo)
+      }
+    },
+    computed: {
+      todos () {
+        return this.$store.state.todos
       }
     }
   }
