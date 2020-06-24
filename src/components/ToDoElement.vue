@@ -9,7 +9,7 @@
       <button v-on:click="openModal">More</button>
 
     </div>
-    <modal @close:modal="closeModal" ref="modal" v-bind:todoelement="todoelement" v-show="modalOpen"></modal>
+    <modal @close:modal="closeModal" @transferFromChild="deleteToDo" v-bind:todoelement="todoelement" v-if="modalOpen"></modal>
   </div>
 </template>
 
@@ -33,10 +33,12 @@
       },
       openModal () {
         this.modalOpen = true
-        this.$refs.modal.saveState()
       },
       closeModal () {
         this.modalOpen = false
+      },
+      deleteToDo (id) {
+        this.$emit('deleteToDo', id)
       }
     },
     components: {

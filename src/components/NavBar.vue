@@ -6,8 +6,13 @@
         <router-link :to="{name: linkName.value}">{{linkName.value}}</router-link>
         </span>
       </div>
-      <div class="small-screen-nav">
-        <NavBarIcon class="svg-nav-bar"/>
+      <div class="small-screen-nav dropdown">
+        <NavBarIcon class="svg-nav-bar dropbtn"/>
+        <div class="dropdown-content">
+          <span class="nav__link" v-bind:key="linkName.id" v-for="linkName of linkNames">
+        <router-link :to="{name: linkName.value}">{{linkName.value}}</router-link>
+          </span>
+        </div>
       </div>
     </nav>
   </header>
@@ -22,7 +27,7 @@
     },
     data () {
       return {
-        linkNames: [{ id: 1, value: 'Home' }, { id: 2, value: 'ToDoList' }, { id: 3, value: 'About' }]
+        linkNames: [{ id: 1, value: 'Home' }, { id: 2, value: 'ToDoList' }, { id: 3, value: 'About' }],
       }
     }
   }
@@ -57,7 +62,7 @@
     color: white;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1029px) {
     .big-screen-nav {
       display: none;
     }
@@ -65,9 +70,51 @@
     .nav {
       justify-content: flex-end;
     }
+    /* Style The Dropdown Button */
+    .dropbtn {
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      top:100%;
+      right: 25%;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+
+    }
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 1030px) {
     .small-screen-nav {
       display: none;
     }

@@ -73,6 +73,7 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    border-radius: 5px;
   }
 
   .title-form p {

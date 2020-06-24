@@ -6,11 +6,11 @@
       <p>Name</p>
       <input type="text" v-model="toDoElement.text">
       <p>Description</p>
-      <input type="text" v-model="toDoElement.description">
+      <textarea v-model="toDoElement.description"/>
     </form>
     <div class="buttons-container">
-    <Button v-bind:text="'Save'"></Button>
-    <Button class="delete-button" v-bind:text="'Delete'"></Button>
+    <Button @click.native="acceptChanges" v-bind:text="'Save'"></Button>
+    <Button @click.native="deleteToDo" class="delete-button" v-bind:text="'Delete'"></Button>
     </div>
   </div>
 </template>
@@ -20,14 +20,24 @@
   export default {
     data () {
       return {
-        dataBeforeEdit: {}
+        dataBeforeEdit: {},
+        changesAccepted: false
       }
     },
     props: {
-      toDoElement: {}
+      toDoElement: {},
     },
     components: {
       Button
+    },
+    created () {
+      this.saveState()
+    },
+    beforeDestroy () {
+      console.log(this.changesAccepted)
+      if (!this.changesAccepted) {
+        this.cancelChanges()
+      }
     },
     methods: {
       saveState () {
@@ -37,6 +47,15 @@
       cancelChanges () {
         this.toDoElement.text = this.dataBeforeEdit.text
         this.toDoElement.description = this.dataBeforeEdit.description
+      },
+      acceptChanges () {
+        console.log('Accept changes')
+        this.changesAccepted = true
+        this.$emit('closeModal')
+      },
+      deleteToDo () {
+        this.$emit('passToParent', this.toDoElement.id)
+        this.$emit('closeModal')
       }
     }
   }
@@ -84,14 +103,19 @@
     color: #808080;
   }
 
-  .edit-remove-form input{
+  input, textarea{
     margin-left: 15%;
-    height: 2em;
     /*border: 1px gray solid;*/
     width: 50%;
     padding: 0.5em;
     border: hidden;
     border-bottom: 1px rgba(203, 203, 203, 0.58) solid;
+  }
+  input{
+    height: 2em;
+  }
+  textarea{
+    height: auto;
   }
 
   hr{
@@ -100,6 +124,7 @@
   }
 
   Button{
+    min-width: 5em;
     width: 15%;
     margin-top: 3em;
   }

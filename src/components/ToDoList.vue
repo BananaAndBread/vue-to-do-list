@@ -7,7 +7,7 @@
         <table>
           <tbody>
           <tr>
-            <to-do-element @change:todoelement="changeTodoText" v-for ="todo in todos" v-bind:key="todo.id" v-bind:todoelement = "todo"/>
+            <to-do-element @deleteToDo='deleteToDo' @change:todoelement="changeTodoText" v-for ="todo in todos" v-bind:key="todo.id" v-bind:todoelement = "todo"/>
           </tr>
           </tbody>
         </table>
@@ -58,6 +58,10 @@
       addNewToDo (newToDo) {
         newToDo = { id: this.todos.length, text: newToDo.text, description: newToDo.description, checked: false }
         this.todos = [newToDo, ...this.todos]
+      },
+      deleteToDo (id) {
+        console.log(id)
+        this.todos = this.todos.filter(todo => todo.id !== id)
       }
     }
   }
@@ -97,7 +101,7 @@
     margin-top: 0;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 1029px) {
     .to-do-list{
       display: flex;
       flex-direction: column;
@@ -112,7 +116,7 @@
     .to-do-add-form{
       max-width: 500px;
     }
-  @media (min-width: 700px) {
+  @media (min-width: 1030px) {
     .to-do-wrapper {
       display: grid;
       grid-template-areas: "to-do-add-form to-do-elements .";
