@@ -2,6 +2,17 @@
 
 > A Vue.js project
 
+Hello, here is an example of simple to-do list app made to practive Vue framework
+
+What is inside?
+
+components
+* styles (custom)
+* axios requests
+* vuex
+* vue router (basic)
+
+You are welcomed to criticize the code)
 ## Build Setup
 
 ``` bash
