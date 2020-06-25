@@ -1,10 +1,10 @@
 <template>
   <div class="edit-remove-form">
-    <h1>{{toDoElement.text}}</h1>
+    <h1>{{toDoElement.title}}</h1>
     <hr>
     <form>
       <p>Name</p>
-      <input type="text" v-model="toDoElement.text">
+      <input type="text" v-model="toDoElement.title">
       <p>Description</p>
       <textarea v-model="toDoElement.description"/>
     </form>
@@ -41,16 +41,15 @@
     },
     methods: {
       saveState () {
-        console.log('saved state in form')
         this.dataBeforeEdit = Object.assign({}, this.toDoElement)
       },
       cancelChanges () {
-        this.toDoElement.text = this.dataBeforeEdit.text
+        this.toDoElement.title = this.dataBeforeEdit.title
         this.toDoElement.description = this.dataBeforeEdit.description
       },
       acceptChanges () {
-        console.log('Accept changes')
         this.changesAccepted = true
+        this.$store.dispatch('updateToDo', this.toDoElement)
         this.$emit('closeModal')
       },
       deleteToDo () {

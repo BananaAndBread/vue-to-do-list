@@ -2,10 +2,10 @@
   <div>
     <div class="to-do-element">
       <span class="round">
-        <input :id="todoelement.id" type="checkbox" v-model="todoelement.checked" v-on:change="handleCheck">
+        <input :id="todoelement.id" type="checkbox" v-model="todoelement.isCompleted" v-on:change="handleCheck">
         <label :for="todoelement.id"></label>
       </span>
-      <p>{{todoelement.text}} &nbsp;</p>
+      <p>{{todoelement.title}} &nbsp;</p>
       <button v-on:click="openModal">More</button>
 
     </div>
@@ -34,6 +34,7 @@
         this.modalOpen = false
       },
       handleCheck () {
+        this.$store.dispatch('updateToDo', this.todoelement)
       }
     },
     components: {

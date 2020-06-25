@@ -37,7 +37,7 @@
       countTasksDone () {
         let counter = 0
         for (const todo of this.todos) {
-          if (todo.checked === true) {
+          if (todo.isCompleted === true) {
             counter += 1
           }
         }

@@ -5,25 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    todos: [
-      {
-        id: 0,
-        text: 'Something longer longer longer',
-        checked: true,
-        description: 'Description 1'
-      },
-      {
-        id: 1,
-        text: 'Do something 2',
-        checked: false,
-        description: 'Description 2'
-},
-      {
-        id: 2,
-        text: 'Do something 3',
-        checked: false,
-        description: 'Description 3'
-      }]
+    todos: []
   },
 
   getters: {
@@ -34,22 +16,56 @@ export default new Vuex.Store({
       state.todos = state.todos.filter(todo => todo.id !== id)
     },
     addToDo (state, newToDo) {
-      newToDo = { id: state.todos.length, text: newToDo.text, description: newToDo.description, checked: false }
       state.todos = [newToDo, ...state.todos]
     },
-    getToDos (state) {
+    getToDos (state, data) {
+      state.todos = data
     }
   },
 
   actions: {
     removeToDo (context, id) {
-      context.commit('removeToDo', id)
+      axios({
+        method: 'delete',
+        url: `https://todo-list.ionagamed.ru/todos/${id}`,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(context.commit('removeToDo', id))
     },
     addToDo (context, newToDo) {
-      context.commit('addToDo', newToDo)
+      axios({
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        url: 'https://todo-list.ionagamed.ru/todos/',
+        data: {
+          projectId: '9Yp_ExY7WgmmPUL3XeOwn',
+          title: newToDo.title,
+          dueDate: '2011-10-10',
+          description: newToDo.description
+        }
+      })
+        .then((response) => {
+          context.commit('addToDo', response.data)
+        })
+        .catch((e) => console.log(e.message))
     },
     getToDos (context) {
-      context.commit('getToDos')
+      axios.get('https://todo-list.ionagamed.ru/todos/?projectId=9Yp_ExY7WgmmPUL3XeOwn')
+        .then((response) => {
+          context.commit('getToDos', response.data)
+          console.log(response.data)
+        })
+    },
+    updateToDo (context, changedToDo) {
+      axios({
+        method: 'patch',
+        url: `https://todo-list.ionagamed.ru/todos/${changedToDo.id}`,
+        data: changedToDo
+      })
     }
   }
 })

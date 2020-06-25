@@ -27,7 +27,7 @@
     },
     data () {
       return {
-        linkNames: [{ id: 1, value: 'Home' }, { id: 2, value: 'ToDoList' }, { id: 3, value: 'About' }],
+        linkNames: [{ id: 2, value: 'ToDoList' }, { id: 3, value: 'About' }],
       }
     }
   }

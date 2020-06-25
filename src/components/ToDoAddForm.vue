@@ -3,7 +3,7 @@
     <form v-on:submit.prevent="handleSubmit">
       <div class="title-form">
         <p class="title-label">Title: &nbsp;</p>
-        <input :class="{'error-input': invalidTitle && triedSubmit, 'title-form-input': true}" id="title" v-model="newToDoText" type="text">
+        <input :class="{'error-input': invalidTitle && triedSubmit, 'title-form-input': true}" id="title" v-model="newToDoTitle" type="text">
       </div>
       <div class="description-form">
         <p>Description</p>
@@ -23,7 +23,7 @@
     name: 'to-do-form',
     data () {
       return {
-        newToDoText: '',
+        newToDoTitle: '',
         newToDoDescription: '',
         error: false,
         triedSubmit: false
@@ -36,10 +36,10 @@
         if (this.invalidTitle || this.invalidDescription) {
           return
         }
-        const newToDo = { text: this.newToDoText, description: this.newToDoDescription }
+        const newToDo = { title: this.newToDoTitle, description: this.newToDoDescription }
         console.log('I submit' + newToDo)
         this.$emit('add:new-todo', newToDo)
-        this.newToDoText = ''
+        this.newToDoTitle = ''
         this.newToDoDescription = ''
         this.clearStatus()
       },
@@ -49,7 +49,7 @@
     },
     computed: {
       invalidTitle () {
-        return this.newToDoText === ''
+        return this.newToDoTitle === ''
       },
       invalidDescription () {
         return this.newToDoDescription === ''
