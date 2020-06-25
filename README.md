@@ -7,7 +7,7 @@ Hello, here is an example of simple to-do list app made to practive Vue framewor
 What is inside?
 
 components
-* styles (custom)
+* styles (custom) with breakpoints (kinda responsive)
 * axios requests
 * vuex
 * vue router (basic)
