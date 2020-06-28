@@ -2,17 +2,7 @@
 
 > A Vue.js project
 
-Hello, here is an example of simple to-do list app made to practive Vue framework
-
-What is inside?
-
-components
-* styles (custom) with breakpoints (kinda responsive)
-* axios requests
-* vuex
-* vue router (basic)
-
-You are welcomed to criticize the code)
+Новая версия проекта с nuxt.js и многочисленными исправлениями здесь: https://github.com/BananaAndBread/nuxt-to-do-list
 ## Build Setup
 
 ``` bash
